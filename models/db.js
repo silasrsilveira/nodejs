@@ -1,5 +1,4 @@
-const Sequelize = require ('sequelize')
-
+const Sequelize = require('sequelize')
 // Conexão com o banco de dados MySql
 const sequelize = new Sequelize('postapp', 'root', 'mesa.123', {
     host: "localhost",
@@ -11,5 +10,4 @@ const sequelize = new Sequelize('postapp', 'root', 'mesa.123', {
 module.exports = {
     Sequelize: Sequelize,
     sequelize: sequelize
-
 }

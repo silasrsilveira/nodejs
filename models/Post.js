@@ -1,4 +1,3 @@
-const { type } = require('os')
 const db = require('./db')
 
 const Post = db.sequelize.define('postagens', {
@@ -9,6 +8,4 @@ const Post = db.sequelize.define('postagens', {
         type: db.Sequelize.TEXT
     }
 })
-
 module.exports = Post
-Post.sync({force: true})

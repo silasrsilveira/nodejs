@@ -9,3 +9,4 @@ $const app = express();
 $const handlebars = require ('express-handlebars')
 
 
+$ Realizado a Exportação do Sequelize
