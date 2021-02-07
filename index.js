@@ -3,9 +3,7 @@ const app = express();
 const handlebars = require ('express-handlebars')
 const bodyParser = require ('body-parser')
 const { getMaxListeners, mainModule } = require('process')
-const Sequelize = require ('sequelize')
-
-
+const Post = require('./models/Post')
 
 
 // Config
@@ -16,22 +14,32 @@ const Sequelize = require ('sequelize')
     // Body Parser
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
-  // Conexão com o banco de dados MySql
-const sequelize = new Sequelize('test', 'root', 'mesa.123', {
-    host: "localhost",
-    dialect: 'mysql'
-})
+ 
+
 // Rotas
+
+app.get('/', function (req, res) {
+  res.render('home')
+})
 
   app.get('/cad', function (req, res){
     res.render('formulario')
   })
 
-  app.post('/add', function (req, res) {
-    res.send(`Texto: ${req.body.titulo} Coteudo: ${req.body.conteudo}`)
-    
+  app.post('/add', function(req, res){
+    Post.create({
+      titulo: req.body.titulo,
+      conteudo: req.body.conteudo
+    }).then(function(){
+      res.redirect('/')
+    }).catch(function(erro){
+      res.send("Houve um erro: "+erro)
+    })
+
   })
 
+
+//Config porta
 app.listen(8081, function() {
   console.log("Hey, Welcome to my World, Port: 8081");
 });
