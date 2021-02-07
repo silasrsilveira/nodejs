@@ -1,8 +1,11 @@
-git status (Verificar o Status)
-git add . (Adicionar Todos Arquivos)
-git commit -m "Firt Blood"   (Comentarario da Atualização)
-git status
-git push origin main (Enviar para github)
-git pull origin main (Puxar arquivos da main)
-git checkout -b alteracao_background (Criar nova branch)
-git checkout main (Para alterar branch)
+$ npm install --save express-handlebars
+$ npm install --save body-parser
+app.post
+app.get
+
+
+$const express = require("express");
+$const app = express();
+$const handlebars = require ('express-handlebars')
+
+
