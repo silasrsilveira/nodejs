@@ -22,6 +22,9 @@ const sequelize = new Sequelize('test', 'root', 'mesa.123', {
     res.render('formulario')
   })
 
+  app.post('/add', function (req, res) {
+    res.send('Formulario Recebido')
+      })
 
 app.listen(8081, function() {
   console.log("Hey, Welcome to my World, Port: 8081");
