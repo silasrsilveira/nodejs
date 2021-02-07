@@ -1,32 +1,28 @@
 const express = require("express");
 const app = express();
-
-
-//Mensagem Inicial
-app.get("/", function (req, res){
-  res.sendFile(__dirname + "/html/index.html")
-});
-
-//Nova rota - Sobre
-app.get("/sobre", function (req, res){
-  res.sendFile(__dirname + "/html/sobre.html")
-});
-
-//Nova rota - Blog
-app.get("/blog",function (req, res) {
-  res.send("Welcome to my Blog!")
-});
-
-//Rota Olá
-app.get('/ola/:cargo/:nome/:cor', function (req, res){
-  res.send("<h1>Ola "+req.params.nome+"</h1>"+"<h2> Seu cargo: "+req.params.cargo+"<h/2>"+"<h3> Sua cor favorita:"+req.params.cor+"</h3>")
-
-});
+const handlebars = require ('express-handlebars')
+const { getMaxListeners, mainModule } = require('process')
+const Sequelize = require ('sequelize')
 
 
 
 
-//Localhost:8180
+// Config
+  // Template Engine
+    app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+    app.set('view engine', 'handlebars')
+  // Conexão com o banco de dados MySql
+const sequelize = new Sequelize('test', 'root', 'mesa.123', {
+    host: "localhost",
+    dialect: 'mysql'
+})
+// Rotas
+
+  app.get('/cad', function (req, res){
+    res.render('formulario')
+  })
+
+
 app.listen(8081, function() {
   console.log("Hey, Welcome to my World, Port: 8081");
 });
